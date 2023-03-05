@@ -1,0 +1,17 @@
+<h4>Search Books:</h4>
+<%= form_tag(root_path, method: :get) do %>
+  <div class="input-group">
+    <%= text_field_tag(:search, params[:search], class: 'form-control') %>
+  </div>
+  <h4>Filter Books By Year:</h4>
+  <div class="input-group">
+    <%= label_tag(:after, "After", class: 'form-label m-1') %>
+    <%= text_field_tag(:after, params[:after], class: 'form-control') %>
+    <%= label_tag(:after, "Before", class: 'form-label m-1') %>
+    <%= text_field_tag(:before, params[:before], class: 'form-control') %>
+  </div>
+  <div class="button-group mt-3 mb-3">
+    <%= link_to("Clear", root_path, class: 'btn btn-danger') %>
+    <%= submit_tag("Search", class: 'btn btn-success') %>
+  </div>
+<% end %>

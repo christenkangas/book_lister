@@ -1,0 +1,118 @@
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1"><h1>Book Lister</h1></span>
+  </div>
+</nav>
+<div class="books_body">
+  <div class="container-fluid">
+    <%= render 'books/search' %>
+    <table class="table table-striped">
+      <thead class="thead">
+        <% sort_params = request&.params&.slice(:search, :after, :before, :sort, :sort_direction) %>
+        <tr>
+          <th scope="col">
+            <%= link_to(
+              root_path(
+                sort_params.merge(
+                    sort_direction: sort_params[:sort_direction]&.to_sym != :asc ? :asc : :desc,
+                    sort: :title
+                )
+              ),
+              class: "digg_color"
+            ) do %>
+              Title
+              <% if sort_params[:sort]&.to_sym == :title %>
+                <% if sort_params[:sort_direction]&.to_sym == :asc %>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+                  </svg>
+                <% elsif sort_params[:sort_direction]&.to_sym == :desc %>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                <% end %>
+              <% end %>
+            <% end %>
+          </th>
+          <th scope="col">
+            <%= link_to(
+              root_path(
+                sort_params.merge(
+                    sort_direction: sort_params[:sort_direction]&.to_sym != :asc ? :asc : :desc,
+                    sort: :author
+                )
+              ),
+              class: "digg_color"
+            ) do %>
+              Author
+              <% if sort_params[:sort]&.to_sym == :author %>
+                <% if sort_params[:sort_direction]&.to_sym == :asc %>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+                  </svg>
+                <% elsif sort_params[:sort_direction]&.to_sym == :desc %>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                <% end %>
+              <% end %>
+            <% end %>
+          </th>
+          <th scope="col">
+            <%= link_to(
+              root_path(
+                sort_params.merge(
+                    sort_direction: sort_params[:sort_direction]&.to_sym != :asc ? :asc : :desc,
+                    sort: :year
+                )
+              ),
+              class: "digg_color"
+            ) do %>
+              Year
+              <% if sort_params[:sort]&.to_sym == :year %>
+                <% if sort_params[:sort_direction]&.to_sym == :asc %>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+                  </svg>
+                <% elsif sort_params[:sort_direction]&.to_sym == :desc %>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                <% end %>
+              <% end %>
+            <% end %>
+          </th>
+          <th scope="col">
+            <%= link_to(
+              root_path(
+                sort_params.merge(
+                    sort_direction: sort_params[:sort_direction]&.to_sym != :asc ? :asc : :desc,
+                    sort: :isbn
+                )
+              ),
+              class: "digg_color"
+            ) do %>
+              ISBN
+              <% if sort_params[:sort]&.to_sym == :isbn %>
+                <% if sort_params[:sort_direction]&.to_sym == :asc %>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+                  </svg>
+                <% elsif sort_params[:sort_direction]&.to_sym == :desc %>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                <% end %>
+              <% end %>
+            <% end %>
+          </th>
+        </tr>
+      <tbody>
+        <%= render @books %>
+      </tbody>
+    </table>
+    <div class="digg_pagination">
+      <%= will_paginate @books %>
+    </div>
+  </div>
+</div>
